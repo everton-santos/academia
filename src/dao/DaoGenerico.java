@@ -17,7 +17,7 @@ public abstract class DaoGenerico<T extends Entidade > {
 	public DaoGenerico() {
 		if (entityManagerFactory == null) {
 			entityManagerFactory = Persistence
-					.createEntityManagerFactory("cookmyfood");
+					.createEntityManagerFactory("academia");
 		}
 	}
 
