@@ -10,9 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Pessoa extends Entidade {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,9 +24,12 @@ public class Pessoa extends Entidade {
 	private String telefoneFixo;
 	private String celular;
 	private Date dataNascimento;
+	
 	@Embedded
 	private Endereco endereco;
 	
+	@OneToOne
+	private Usuario usuario;
 	
 	public int getId() {
 		return id;
@@ -37,30 +41,17 @@ public class Pessoa extends Entidade {
 	public String getNome() {
 		return nome;
 	}
-
-
-
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
-
-
+	
 	public String getEmail() {
 		return email;
 	}
 
-
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
 
 	public String getCpf() {
 		return cpf;
@@ -114,10 +105,7 @@ public class Pessoa extends Entidade {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
-
-
-
+	
 	@Override
 	public Serializable GetId() {
 		return this.id;
@@ -130,6 +118,16 @@ public class Pessoa extends Entidade {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	
 	
 	
 	

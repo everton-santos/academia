@@ -7,14 +7,18 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Instrutor extends Pessoa {
-	@OneToMany(mappedBy="instrutor")
-	private List<Avaliacao> avaliacoes;
-
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
+	
+	@OneToMany(mappedBy = "instrutor")
+	private List<MedidaAvaliacao> medidasAvaliacao;
+	
+	@OneToMany(mappedBy = "instrutor")
+	private List<Ficha> fichas;
+	
+	public List<MedidaAvaliacao> getMedidasAvaliacao() {
+		return medidasAvaliacao;
 	}
 
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
+	public void setMedidasAvaliacao(List<MedidaAvaliacao> medidasAvaliacao) {
+		this.medidasAvaliacao = medidasAvaliacao;
 	}
 }

@@ -1,21 +1,26 @@
 package teste;
 
-import dao.PessoaDao;
-import modelos.Pessoa;
+import dao.AlunoDao;
+import modelos.Aluno;
+import modelos.Endereco;
+
 
 public class TesteMain {
 
 	public static void main(String[] args) {
+		Aluno aluno = new Aluno();
 		
-		Pessoa p = new Pessoa();
-		p.setCelular("1231321");
-		p.setNome("Everton");
-		p.setCpf("546465465");
+		aluno.setNome("Everton");
 		
-		PessoaDao dao = new PessoaDao();
-		dao.salvar(p);
+		Endereco endereco = new Endereco();
+		endereco.setNumero(36);
 		
+		aluno.setEndereco(endereco);
 
+		AlunoDao dao = new AlunoDao();
+		dao.salvar(aluno);
+		
+		
 	}
 
 }

@@ -11,18 +11,18 @@ import javax.persistence.OneToOne;
 @Entity
 public class Usuario extends Entidade {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String login;
 	private String senha;
-	@OneToOne(mappedBy = "pessoa_id")
+	@OneToOne(mappedBy = "usuario")
 	private Pessoa pessoa;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -46,4 +46,14 @@ public class Usuario extends Entidade {
 	public Serializable GetId() {
 		return this.id;
 	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
+	
 }

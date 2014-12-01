@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class FichaExercicio extends Entidade {
@@ -14,6 +15,21 @@ public class FichaExercicio extends Entidade {
 	private int id;
 	private int qtdRepeticoes;
 	private int qtdSeries;
+	
+	@ManyToOne
+	private Ficha ficha;
+
+	@ManyToOne
+	private Exercicio exercicio;
+	
+	
+	public Ficha getFicha() {
+		return ficha;
+	}
+
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
+	}
 
 	public int getId() {
 		return id;
