@@ -3,12 +3,16 @@ package modelos;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Pessoa extends Entidade {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -19,22 +23,17 @@ public class Pessoa extends Entidade {
 	private String telefoneFixo;
 	private String celular;
 	private Date dataNascimento;
+	@Embedded
+	private Endereco endereco;
 	
 	
 	public int getId() {
 		return id;
 	}
 
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-
-
 	public String getNome() {
 		return nome;
 	}
@@ -123,4 +122,15 @@ public class Pessoa extends Entidade {
 	public Serializable GetId() {
 		return this.id;
 	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
+	
+	
 }
