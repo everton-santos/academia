@@ -99,9 +99,9 @@
 								<tr>
 									<td><%=aluno.getId()%></td>
 									<td><%=aluno.getNome()%></td>
-									<td><a href="ExerciciosEditar?id=<%=aluno.getId()%>"
+									<td><%-- <a href="ExerciciosEditar?id=<%=aluno.getId()%>"
 										class="btn btn-primary"><span
-											class="glyphicon glyphicon-pencil"></span></a> <a
+											class="glyphicon glyphicon-pencil"></span></a> --%> <a
 										href="ExerciciosExcluir?id=<%=aluno.getId()%>"
 										class="btn btn-danger"><span
 											class="glyphicon glyphicon-remove"></span></a></td>

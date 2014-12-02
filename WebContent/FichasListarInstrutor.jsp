@@ -1,3 +1,4 @@
+<%@page import="modelos.Ficha"%>
 <%@page import="modelos.Medicao"%>
 <%@page import="modelos.Exercicio"%>
 <%@page import="modelos.Aluno"%>
@@ -24,45 +25,23 @@
 			<div role="navigation">
 				<ul class="nav nav-justified">
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> Alunos <span
+						role="button" aria-expanded="false"> Avaliaçoes <span
 							class="caret"></span>
 					</a>
 						<ul class="dropdown-menu nav-justified" role="menu">
-							<li><a href="alunos-listar"> Listar </a></li>
-							<li><a href="alunos-inserir"> Inserir </a></li>
+							<li><a href="AvaliacoesListarInstrutor"> Listar </a></li>
+							<li><a href="AvaliacoesInserirInstrutor"> Inserir </a></li>
 						</ul></li>
+						
 					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> Instrutores <span
+						role="button" aria-expanded="false"> Fichas <span
 							class="caret"></span>
 					</a>
 						<ul class="dropdown-menu nav-justified" role="menu">
-							<li><a href="instrutores-listar"> Listar </a></li>
-							<li><a href="instrutores-inserir"> Inserir </a></li>
+							<li><a href="FichasListarInstrutor"> Listar </a></li>
+							<li><a href="FichasInserirInstrutor"> Inserir </a></li>
 						</ul></li>
-					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> Modalidades <span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu nav-justified" role="menu">
-							<li><a href="modalidades-listar"> Listar </a></li>
-							<li><a href="modalidades-inserir"> Inserir </a></li>
-						</ul></li>
-					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> Exercicios <span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu nav-justified" role="menu">
-							<li><a href="exercicios-listar"> Listar </a></li>
-							<li><a href="exercicios-inserir"> Inserir </a></li>
-						</ul></li>
-					<li><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-expanded="false"> Medidas <span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu nav-justified" role="menu">
-							<li><a href="medidas-listar"> Listar </a></li>
-							<li><a href="medidas-inserir"> Inserir </a></li>
-						</ul></li>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -72,10 +51,28 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar medidas</h3>
+					<h3>Listar fichas</h3>
 
 					<form action="exercicios-listar">
-						Nome:<input type="text" name="nome" /> <input type="submit"
+						Nome:<input type="text" name="nome" /> 
+						
+						Modalidade: <select
+							id="selectbasic" name="modalidade">
+							<option value="">Selecione</option>
+							<%
+								List<Modalidade> lista = (List<Modalidade>) request
+										.getAttribute("modalidades");
+
+								for (Modalidade obj : lista) {
+							%>
+							<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
+
+							<%
+								}
+							%>
+						</select> 
+						
+						<input type="submit"
 							value="Pesquisar" />
 					</form>
 
@@ -89,38 +86,31 @@
 							</thead>
 							<tbody>
 								<%
-									List<Medicao> listaAlunos = (List<Medicao>) request
+									List<Ficha> listaAlunos = (List<Ficha>) request
 											.getAttribute("lista");
 
-									for (Medicao aluno : listaAlunos) {
+									for (Ficha aluno : listaAlunos) {
 								%>
-
-
-
 								<tr>
-									<td><%=aluno.getId()%></td>
-									<td><%=aluno.getDescricao()%></td>
-									<td><%-- <a href="MedidasEditar?id=<%=aluno.getId()%>"
+									<td><%=aluno.getAlunoModalidade().getAluno().getNome()%></td>
+									<td><%=aluno.getData()%></td>
+									
+									<%-- <td><a href="FichaEditarInstrutor?id=<%=aluno.getId()%>"
 										class="btn btn-primary"><span
-											class="glyphicon glyphicon-pencil"></span></a> --%> <a
-										href="MedidasExcluir?id=<%=aluno.getId()%>"
+											class="glyphicon glyphicon-pencil"></span></a> <a
+										href="FichaExcluirInstrutor?id=<%=aluno.getId()%>"
 										class="btn btn-danger"><span
-											class="glyphicon glyphicon-remove"></span></a></td>
+											class="glyphicon glyphicon-remove"></span></a></td> --%>
 								</tr>
-
-
 								<%
 									}
 								%>
 							</tbody>
 						</table>
 					</div>
-
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 </body>
 </html>

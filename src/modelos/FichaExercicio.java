@@ -59,4 +59,12 @@ public class FichaExercicio extends Entidade {
 	public Serializable GetId() {
 		return this.id;
 	}
+
+	public Exercicio getExercicio() {
+		return exercicio;
+	}
+
+	public void setExercicio(Exercicio exercicio) {
+		this.exercicio = exercicio;
+	}
 }

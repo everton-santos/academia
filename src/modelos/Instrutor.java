@@ -21,4 +21,14 @@ public class Instrutor extends Pessoa {
 	public void setMedidasAvaliacao(List<MedidaAvaliacao> medidasAvaliacao) {
 		this.medidasAvaliacao = medidasAvaliacao;
 	}
+
+	public List<Ficha> getFichas() {
+		return fichas;
+	}
+
+	public void setFichas(List<Ficha> fichas) {
+		this.fichas = fichas;
+	}
+	
+	
 }

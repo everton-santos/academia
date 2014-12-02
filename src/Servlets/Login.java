@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 						usuario.getLogin());
 
 				if (usuario.getPessoa() instanceof Instrutor) {
-					
+					response.sendRedirect("FichasListarInstrutor");
 				} else if (usuario.getPessoa() instanceof Aluno) {
 					response.sendRedirect("AvaliacoesListar");
 				} else {

@@ -40,7 +40,7 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Minhas avaliações</h3>
+					<h3>Listar fichas</h3>
 
 					<form action="exercicios-listar">
 						Nome:<input type="text" name="nome" /> <input type="submit"
@@ -62,16 +62,21 @@
 
 									for (Medicao aluno : listaAlunos) {
 								%>
+
+
+
 								<tr>
 									<td><%=aluno.getId()%></td>
 									<td><%=aluno.getDescricao()%></td>
-									<td><a href="MedidasEditar?id=<%=aluno.getId()%>"
+									<td><a href="FichasEditar?id=<%=aluno.getId()%>"
 										class="btn btn-primary"><span
 											class="glyphicon glyphicon-pencil"></span></a> <a
-										href="MedidasExcluir?id=<%=aluno.getId()%>"
+										href="FichasExcluir?id=<%=aluno.getId()%>"
 										class="btn btn-danger"><span
 											class="glyphicon glyphicon-remove"></span></a></td>
 								</tr>
+
+
 								<%
 									}
 								%>

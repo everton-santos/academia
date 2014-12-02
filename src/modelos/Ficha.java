@@ -73,4 +73,14 @@ public class Ficha extends Entidade {
 	public Serializable GetId() {
 		return this.id;
 	}
+
+	public AlunoModalidade getAlunoModalidade() {
+		return alunoModalidade;
+	}
+
+	public void setAlunoModalidade(AlunoModalidade alunoModalidade) {
+		this.alunoModalidade = alunoModalidade;
+	}
+	
+	
 }
