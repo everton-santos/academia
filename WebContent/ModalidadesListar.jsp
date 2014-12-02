@@ -72,7 +72,7 @@
 				<div class="col-md-10 col-md-offset-1">
 					<h3>Listar modalidades</h3>
 
-					<form action="alunos-listar">
+					<form action="modalidades-listar">
 						Nome:<input type="text" name="nome" /> <input type="submit"
 							value="Pesquisar" />
 					</form>

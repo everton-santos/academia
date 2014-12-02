@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Aluno;
+import modelos.Exercicio;
 import modelos.Instrutor;
 import modelos.Modalidade;
 import modelos.Usuario;
 import dao.AlunoDao;
+import dao.ExercicioDao;
 import dao.InstrutorDao;
 import dao.ModalidadeDao;
 import dao.UsuarioDao;
@@ -88,6 +90,14 @@ public class AcademiaFacade {
 		
 	}
 	
+	public static void salvarInstrutor(Instrutor aluno){
+		InstrutorDao da = new InstrutorDao();
+		UsuarioDao du = new UsuarioDao();
+		du.salvar(aluno.getUsuario());
+		da.salvar(aluno);
+		
+	}
+	
 	private static void CriarAdmin(){
 		
 		if (listaAlunoPorNome("admin").size() <= 0) {
@@ -109,6 +119,20 @@ public class AcademiaFacade {
 		
 		if (alunos == null) {
 			alunos = new ArrayList<Modalidade>();
+		}
+		
+		return alunos;
+	}
+
+	public static List<Exercicio> listaExercicoPorNome(String nome) {
+		if (nome == null) {
+			nome = "";
+		}
+		ExercicioDao dao = new ExercicioDao();
+		List<Exercicio> alunos = dao.getListaPorNome(nome);
+		
+		if (alunos == null) {
+			alunos = new ArrayList<Exercicio>();
 		}
 		
 		return alunos;

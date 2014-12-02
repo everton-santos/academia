@@ -19,28 +19,28 @@ import facade.AcademiaFacade;
 @WebServlet("/modalidades-listar")
 public class ModalidadesListar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ModalidadesListar() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public ModalidadesListar() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		String nome = request.getParameter("nome");
-		
+
 		java.util.List<Modalidade> lista;
-		
-		
-			lista = AcademiaFacade.listaModalidadePorNome(nome);
-		
-		
+
+		lista = AcademiaFacade.listaModalidadePorNome(nome);
+
 		request.setAttribute("lista", lista);
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("/ModalidadesListar.jsp");
@@ -48,9 +48,11 @@ public class ModalidadesListar extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

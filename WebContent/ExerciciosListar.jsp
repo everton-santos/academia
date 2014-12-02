@@ -1,3 +1,4 @@
+<%@page import="modelos.Exercicio"%>
 <%@page import="modelos.Aluno"%>
 <%@page import="modelos.Modalidade"%>
 <%@page import="java.util.List"%>
@@ -70,68 +71,49 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar alunos</h3>
+					<h3>Listar exercicios</h3>
 
-					<form action="alunos-listar">
-						Nome:<input type="text" name="nome" /> Modalidade: <select
-							id="selectbasic" name="modalidade">
-							<option value="">Selecione</option>
-							<%
-								List<Modalidade> lista = (List<Modalidade>) request
-										.getAttribute("modalidades");
-
-								for (Modalidade obj : lista) {
-							%>
-							<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
-
-							<%
-								}
-							%>
-						</select> <input type="submit" value="Pesquisar" />
+					<form action="exercicios-listar">
+						Nome:<input type="text" name="nome" /> <input type="submit"
+							value="Pesquisar" />
 					</form>
-					
+
 					<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>nome</th>
-							<th>cpf</th>
-							<th>telefone</th>
-							<th>celular</th>
-							<th>email</th>
-							<th>acoes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Aluno> listaAlunos = (List<Aluno>) request.getAttribute("lista");
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>nome</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									List<Exercicio> listaAlunos = (List<Exercicio>) request
+											.getAttribute("lista");
 
-							for (Aluno aluno : listaAlunos) {
-						%>
+									for (Exercicio aluno : listaAlunos) {
+								%>
 
 
 
-						<tr>
-							<td><%=aluno.getId()%></td>
-							<td><%=aluno.getNome()%></td>
-							<td><%=aluno.getCpf() %></td>
-							<td><%=aluno.getTelefoneFixo()%></td>
-							<td><%=aluno.getCelular()%></td>
-							<td><%=aluno.getEmail()%></td>
-							<td>
-							<a href="AlunosEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="AlunosExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-							</td>
-						</tr>
+								<tr>
+									<td><%=aluno.getId()%></td>
+									<td><%=aluno.getNome()%></td>
+									<td><a href="ExerciciosEditar?id=<%=aluno.getId()%>"
+										class="btn btn-primary"><span
+											class="glyphicon glyphicon-pencil"></span></a> <a
+										href="ExerciciosExcluir?id=<%=aluno.getId()%>"
+										class="btn btn-danger"><span
+											class="glyphicon glyphicon-remove"></span></a></td>
+								</tr>
 
 
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
+								<%
+									}
+								%>
+							</tbody>
+						</table>
+					</div>
 
 				</div>
 			</div>

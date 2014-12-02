@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelos.Aluno;
 import modelos.Endereco;
+import modelos.Instrutor;
 import modelos.Usuario;
-import dao.AlunoDao;
+import dao.InstrutorDao;
 import facade.AcademiaFacade;
 
 /**
- * Servlet implementation class AlunosEditar
+ * Servlet implementation class InstrutoresEditar
  */
-@WebServlet("/AlunosEditar")
-public class AlunosEditar extends HttpServlet {
+@WebServlet("/IntrutoresEditar")
+public class InstrutoresEditar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AlunosEditar() {
+    public InstrutoresEditar() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +34,15 @@ public class AlunosEditar extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		AlunoDao dao = new AlunoDao();
-		Aluno a = new Aluno();
+		InstrutorDao dao = new InstrutorDao();
+		Instrutor a = new Instrutor();
 		a.setId(id);
 		a = dao.consultarPorID(a);
 		request.setAttribute("aluno", a);
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/AlunosAlterar.jsp");
+				.getRequestDispatcher("/InstrutoresAlterar.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -49,7 +50,7 @@ public class AlunosEditar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Aluno aluno = new Aluno();
+		Instrutor aluno = new Instrutor();
 
 		aluno.setCelular(request.getParameter("celular"));
 		aluno.setCpf(request.getParameter("cpf"));
@@ -74,9 +75,9 @@ public class AlunosEditar extends HttpServlet {
 
 		aluno.setUsuario(u);
 
-		AcademiaFacade.salvarAluno(aluno);
+		AcademiaFacade.salvarInstrutor(aluno);
 
-		response.sendRedirect("alunos-listar");
+		response.sendRedirect("instrutores-listar");
 	}
 
 }

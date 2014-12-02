@@ -1,8 +1,12 @@
+<%@page import="modelos.AlunoModalidade"%>
 <%@page import="modelos.Aluno"%>
 <%@page import="modelos.Modalidade"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	Aluno a = (Aluno) request.getAttribute("aluno");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -70,68 +74,79 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar alunos</h3>
+					<h3>Matricular aluno</h3>
 
-					<form action="alunos-listar">
-						Nome:<input type="text" name="nome" /> Modalidade: <select
-							id="selectbasic" name="modalidade">
-							<option value="">Selecione</option>
-							<%
-								List<Modalidade> lista = (List<Modalidade>) request
-										.getAttribute("modalidades");
-
-								for (Modalidade obj : lista) {
-							%>
-							<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
-
-							<%
-								}
-							%>
-						</select> <input type="submit" value="Pesquisar" />
-					</form>
-					
+					<h5>Modalidades atualmente matriculadas</h5>
 					<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>nome</th>
-							<th>cpf</th>
-							<th>telefone</th>
-							<th>celular</th>
-							<th>email</th>
-							<th>acoes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Aluno> listaAlunos = (List<Aluno>) request.getAttribute("lista");
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>nome</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									List<AlunoModalidade> listaAlunosModalidades = a
+											.getAlunoModalidades();
 
-							for (Aluno aluno : listaAlunos) {
-						%>
+									for (AlunoModalidade aluno : listaAlunosModalidades) {
+								%>
 
 
 
-						<tr>
-							<td><%=aluno.getId()%></td>
-							<td><%=aluno.getNome()%></td>
-							<td><%=aluno.getCpf() %></td>
-							<td><%=aluno.getTelefoneFixo()%></td>
-							<td><%=aluno.getCelular()%></td>
-							<td><%=aluno.getEmail()%></td>
-							<td>
-							<a href="AlunosEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="AlunosExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-							</td>
-						</tr>
+								<tr>
+									<td><%=aluno.getModalidade().getNome()%></td>
+									<td><a
+										href="AlunosModalidadesExcluir?id=<%=a.getId()%>&idM=<%=aluno.getId()%>"
+										class="btn btn-danger"><span
+											class="glyphicon glyphicon-remove"></span></a></td>
+								</tr>
 
 
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
+								<%
+									}
+								%>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<form action="AlunosModalidadesInsert" method="post">
+								<input type="hidden" name="idAluno" value="<%=a.getId()%>" />
+								<div class="control-group">
+									<label class="control-label" for="login">login</label>
+									<div class="controls">
+										<select id="selectbasic" name="modalidade">
+											<option value="">Selecione</option>
+											<%
+												List<Modalidade> lista = (List<Modalidade>) request
+														.getAttribute("modalidades");
+
+												for (Modalidade obj : lista) {
+											%>
+											<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
+
+											<%
+												}
+											%>
+										</select>
+
+									</div>
+									
+								</div>
+								<div class="control-group">
+								<label class="control-label" for="enviar"></label>
+								<div class="controls">
+									<a id="voltar" name="voltar" class="btn btn-danger"
+										href="alunos-listar">voltar</a>
+									<button id="enviar" name="enviar" class="btn btn-primary">enviar</button>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+
 
 				</div>
 			</div>

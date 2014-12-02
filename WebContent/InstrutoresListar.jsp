@@ -73,7 +73,7 @@
 				<div class="col-md-10 col-md-offset-1">
 					<h3>Listar instrutores</h3>
 
-					<form action="alunos-listar">
+					<form action="instrutores-listar">
 						Nome:<input type="text" name="nome" /> <input type="submit" value="Pesquisar" />
 					</form>
 					
@@ -108,7 +108,7 @@
 							<td><%=aluno.getEmail()%></td>
 							<td>
 							<a href="IntrutoresEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="IntrutoresExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+							<a href="InstrutoresExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 							</td>
 						</tr>
 

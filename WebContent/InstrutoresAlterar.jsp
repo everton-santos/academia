@@ -1,9 +1,10 @@
+<%@page import="modelos.Instrutor"%>
 <%@page import="modelos.Aluno"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
-	Aluno a = (Aluno) request.getAttribute("aluno");
+	Instrutor a = (Instrutor) request.getAttribute("aluno");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -73,7 +74,7 @@
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 
-					<form class="form-horizontal" action="AlunosEditar" method="post">
+					<form class="form-horizontal" action="IntrutoresEditar" method="post">
 						<fieldset>
 							<input type="hidden" name="ida" value="<%= a.getId() %>" /> <input type="hidden"
 								name="idu" value="<%= a.getUsuario().getId() %>" />
@@ -223,10 +224,6 @@
 
 						</fieldset>
 					</form>
-				</div>
-				<div class="col-md-4">
-					<br><br><br><br><br>
-					<a href="AlunosModalidades?id=<%= a.getId() %>">Modalidades cadastradas</a>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,9 @@
+<%@page import="modelos.Modalidade"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+	Modalidade a = (Modalidade) request.getAttribute("entidade");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,11 +67,40 @@
 		</div>
 		<!-- menu principal -->
 
-
 		<div class="content">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					
+				<div class="col-md-4 col-md-offset-4">
+
+					<form class="form-horizontal" action="ModalidadesEditar" method="post">
+						<fieldset>
+							<!-- Form Name -->
+							<input type="hidden" name="id" value="<%= a.getId() %>" />
+							<legend>Cadastro/Edição</legend>
+
+							
+
+							<!-- Text input-->
+							<div class="control-group">
+								<label class="control-label" for="nome">nome</label>
+								<div class="controls">
+									<input id="nome" name="nome" type="text" value="<%= a.getNome() %>" placeholder=""
+										class="input-xlarge">
+
+								</div>
+							</div>
+
+							<!-- Button -->
+							<div class="control-group">
+								<label class="control-label" for="enviar"></label>
+								<div class="controls">
+									<a id="voltar" name="voltar" class="btn btn-danger"
+										href="alunos-listar">voltar</a>
+									<button id="enviar" name="enviar" class="btn btn-primary">enviar</button>
+								</div>
+							</div>
+
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>
