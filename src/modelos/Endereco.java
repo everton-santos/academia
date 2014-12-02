@@ -1,10 +1,12 @@
 package modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {
 	private String rua;
+	@Column(nullable=true)
 	private int numero;
 	private String complemento;
 	private String bairro;

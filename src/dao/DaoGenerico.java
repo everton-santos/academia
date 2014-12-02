@@ -19,6 +19,9 @@ public abstract class DaoGenerico<T extends Entidade > {
 			entityManagerFactory = Persistence
 					.createEntityManagerFactory("academia");
 		}
+		
+		
+		
 	}
 
 	protected abstract Class<T> getEntityClass();
