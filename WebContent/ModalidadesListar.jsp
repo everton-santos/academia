@@ -1,4 +1,3 @@
-<%@page import="modelos.Instrutor"%>
 <%@page import="modelos.Aluno"%>
 <%@page import="modelos.Modalidade"%>
 <%@page import="java.util.List"%>
@@ -71,54 +70,49 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar instrutores</h3>
+					<h3>Listar modalidades</h3>
 
 					<form action="alunos-listar">
-						Nome:<input type="text" name="nome" /> <input type="submit" value="Pesquisar" />
+						Nome:<input type="text" name="nome" /> <input type="submit"
+							value="Pesquisar" />
 					</form>
-					
+
 					<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>nome</th>
-							<th>cpf</th>
-							<th>telefone</th>
-							<th>celular</th>
-							<th>email</th>
-							<th>acoes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Instrutor> listaAlunos = (List<Instrutor>) request.getAttribute("lista");
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>nome</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									List<Modalidade> listaAlunos = (List<Modalidade>) request
+											.getAttribute("lista");
 
-							for (Instrutor aluno : listaAlunos) {
-						%>
+									for (Modalidade aluno : listaAlunos) {
+								%>
 
 
 
-						<tr>
-							<td><%=aluno.getId()%></td>
-							<td><%=aluno.getNome()%></td>
-							<td><%=aluno.getCpf() %></td>
-							<td><%=aluno.getTelefoneFixo()%></td>
-							<td><%=aluno.getCelular()%></td>
-							<td><%=aluno.getEmail()%></td>
-							<td>
-							<a href="IntrutoresEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="IntrutoresExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-							</td>
-						</tr>
+								<tr>
+									<td><%=aluno.getId()%></td>
+									<td><%=aluno.getNome()%></td>
+									<td><a href="ModalidadesEditar?id=<%=aluno.getId()%>"
+										class="btn btn-primary"><span
+											class="glyphicon glyphicon-pencil"></span></a> <a
+										href="ModalidadesExcluir?id=<%=aluno.getId()%>"
+										class="btn btn-danger"><span
+											class="glyphicon glyphicon-remove"></span></a></td>
+								</tr>
 
 
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
+								<%
+									}
+								%>
+							</tbody>
+						</table>
+					</div>
 
 				</div>
 			</div>

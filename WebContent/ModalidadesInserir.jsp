@@ -1,7 +1,3 @@
-<%@page import="modelos.Instrutor"%>
-<%@page import="modelos.Aluno"%>
-<%@page import="modelos.Modalidade"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -67,59 +63,39 @@
 		</div>
 		<!-- menu principal -->
 
-
 		<div class="content">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar instrutores</h3>
+				<div class="col-md-4 col-md-offset-4">
 
-					<form action="alunos-listar">
-						Nome:<input type="text" name="nome" /> <input type="submit" value="Pesquisar" />
+					<form class="form-horizontal" action="modalidades-inserir" method="post">
+						<fieldset>
+							<!-- Form Name -->
+							<legend>Cadastro/Edição</legend>
+
+							
+
+							<!-- Text input-->
+							<div class="control-group">
+								<label class="control-label" for="nome">nome</label>
+								<div class="controls">
+									<input id="nome" name="nome" type="text" placeholder=""
+										class="input-xlarge">
+
+								</div>
+							</div>
+
+							<!-- Button -->
+							<div class="control-group">
+								<label class="control-label" for="enviar"></label>
+								<div class="controls">
+									<a id="voltar" name="voltar" class="btn btn-danger"
+										href="alunos-listar">voltar</a>
+									<button id="enviar" name="enviar" class="btn btn-primary">enviar</button>
+								</div>
+							</div>
+
+						</fieldset>
 					</form>
-					
-					<div class="table-responsive">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>nome</th>
-							<th>cpf</th>
-							<th>telefone</th>
-							<th>celular</th>
-							<th>email</th>
-							<th>acoes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-							List<Instrutor> listaAlunos = (List<Instrutor>) request.getAttribute("lista");
-
-							for (Instrutor aluno : listaAlunos) {
-						%>
-
-
-
-						<tr>
-							<td><%=aluno.getId()%></td>
-							<td><%=aluno.getNome()%></td>
-							<td><%=aluno.getCpf() %></td>
-							<td><%=aluno.getTelefoneFixo()%></td>
-							<td><%=aluno.getCelular()%></td>
-							<td><%=aluno.getEmail()%></td>
-							<td>
-							<a href="IntrutoresEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="IntrutoresExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-							</td>
-						</tr>
-
-
-						<%
-							}
-						%>
-					</tbody>
-				</table>
-			</div>
-
 				</div>
 			</div>
 		</div>

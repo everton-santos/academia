@@ -99,5 +99,19 @@ public class AcademiaFacade {
 		}
 		
 	}
+
+	public static List<Modalidade> listaModalidadePorNome(String nome) {
+		if (nome == null) {
+			nome = "";
+		}
+		ModalidadeDao dao = new ModalidadeDao();
+		List<Modalidade> alunos = dao.getListaPorNome(nome);
+		
+		if (alunos == null) {
+			alunos = new ArrayList<Modalidade>();
+		}
+		
+		return alunos;
+	}
 	
 }
