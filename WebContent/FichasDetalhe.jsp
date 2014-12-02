@@ -7,6 +7,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<% Ficha ficha = (Ficha) request.getAttribute("ficha"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,40 +44,32 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h3>Listar fichas</h3>
+					<h3>Ficha detalhe</h3>
 
-					<form action="exercicios-listar">
-						Nome:<input type="text" name="nome" /> <input type="submit"
-							value="Pesquisar" />
-					</form>
+					
+						Nome: <%= ficha.getAlunoModalidade().getAluno().getNome()  %>
 
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>nome</th>
+									<th>Exercicio</th>
+									<th>Num Series</th>
+									<th>Qtd repeticoes</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									List<Ficha> listaAlunos = (List<Ficha>) request
-											.getAttribute("lista");
 
-									for (Ficha aluno : listaAlunos) {
+									for (FichaExercicio aluno : ficha.getFichaExercicios()) {
 								%>
 
 
 
 								<tr>
-									<td><%=aluno.getId()%></td>
-									<td><%=aluno.getData()%></td>
-									<td><a href="FichasDetalhe?id=<%=aluno.getId()%>"
-										class="btn btn-primary"><span
-											class="glyphicon glyphicon-pencil"></span></a><%--  <a
-										href="FichasExcluir?id=<%=aluno.getId()%>"
-										class="btn btn-danger"><span
-											class="glyphicon glyphicon-remove"></span></a> --%></td>
+									<td><%=aluno.getExercicio().getNome()%></td>
+									<td><%=aluno.getQtdSeries()%></td>
+									<td><%=aluno.getQtdRepeticoes()%></td>
 								</tr>
 
 
