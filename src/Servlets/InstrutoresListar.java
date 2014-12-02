@@ -9,23 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ModalidadeDao;
-import facade.AcademiaFacade;
 import modelos.Aluno;
+import modelos.Instrutor;
 import modelos.Modalidade;
-import antlr.collections.List;
+import facade.AcademiaFacade;
 
 /**
- * Servlet implementation class AlunosListar
+ * Servlet implementation class InstrutoresListar
  */
-@WebServlet("/alunos-listar")
-public class AlunosListar extends HttpServlet {
+@WebServlet("/instrutores-listar")
+public class InstrutoresListar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AlunosListar() {
+	public InstrutoresListar() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,26 +35,20 @@ public class AlunosListar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		String modalidadeS = request.getParameter("modalidade");
+
 		String nome = request.getParameter("nome");
-		
-		java.util.List<Aluno> lista;
-		
-		if (modalidadeS != null) {
-			lista = AcademiaFacade.listaAlunoPorNomeModalidade(nome, Integer.parseInt(modalidadeS));
-		}
-		else{
-			lista = AcademiaFacade.listaAlunoPorNome(nome);
-		}
-		
-		java.util.List<Modalidade> modalidades = AcademiaFacade.listaModalidades();
+
+		java.util.List<Instrutor> lista;
+
+		lista = AcademiaFacade.listaInstrutorPorNome(nome);
+
+		java.util.List<Modalidade> modalidades = AcademiaFacade
+				.listaModalidades();
 		request.setAttribute("modalidades", modalidades);
-		
-		
+
 		request.setAttribute("lista", lista);
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/AlunosListar.jsp");
+				.getRequestDispatcher("/InstrutoresListar.jsp");
 		dispatcher.forward(request, response);
 	}
 

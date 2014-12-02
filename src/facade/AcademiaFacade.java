@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelos.Aluno;
+import modelos.Instrutor;
 import modelos.Modalidade;
 import modelos.Usuario;
 import dao.AlunoDao;
+import dao.InstrutorDao;
 import dao.ModalidadeDao;
 import dao.UsuarioDao;
 
@@ -35,6 +37,20 @@ public class AcademiaFacade {
 		return alunos;
 	}
 	
+	public static List<Instrutor> listaInstrutorPorNome(String nome){
+		if (nome == null) {
+			nome = "";
+		}
+		InstrutorDao dao = new InstrutorDao();
+		List<Instrutor> alunos = dao.getListaPorNome(nome);
+		
+		if (alunos == null) {
+			alunos = new ArrayList<Instrutor>();
+		}
+		
+		return alunos;
+	}
+	
 	public static List<Aluno> listaAlunoPorNomeModalidade(String nome, int idModalidade){
 		if (nome == null) {
 			nome = "";
@@ -50,6 +66,7 @@ public class AcademiaFacade {
 		}
 		return alunos;
 	}
+	
 	
 	public static List<Modalidade> listaModalidades()
 	{

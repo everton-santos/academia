@@ -1,3 +1,7 @@
+<%@page import="modelos.Instrutor"%>
+<%@page import="modelos.Aluno"%>
+<%@page import="modelos.Modalidade"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -67,7 +71,55 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
+					<h3>Listar alunos</h3>
+
+					<form action="alunos-listar">
+						Nome:<input type="text" name="nome" /> <input type="submit" value="Pesquisar" />
+					</form>
 					
+					<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>nome</th>
+							<th>cpf</th>
+							<th>telefone</th>
+							<th>celular</th>
+							<th>email</th>
+							<th>acoes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+							List<Instrutor> listaAlunos = (List<Instrutor>) request.getAttribute("lista");
+
+							for (Instrutor aluno : listaAlunos) {
+						%>
+
+
+
+						<tr>
+							<td><%=aluno.getId()%></td>
+							<td><%=aluno.getNome()%></td>
+							<td><%=aluno.getCpf() %></td>
+							<td><%=aluno.getTelefoneFixo()%></td>
+							<td><%=aluno.getCelular()%></td>
+							<td><%=aluno.getEmail()%></td>
+							<td>
+							<a href="IntrutoresEditar?id=<%=aluno.getId()%>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+							<a href="IntrutoresExcluir?id=<%=aluno.getId()%>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+							</td>
+						</tr>
+
+
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</div>
+
 				</div>
 			</div>
 		</div>

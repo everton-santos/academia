@@ -1,5 +1,11 @@
+<%@page import="modelos.Aluno"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+	Aluno a = (Aluno) request.getAttribute("aluno");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,8 +75,8 @@
 
 					<form class="form-horizontal" action="alunos-inserir" method="post">
 						<fieldset>
-							<input type="hidden" name="ida" />
-							<input type="hidden" name="idu" />
+							<input type="hidden" name="ida" value="<%= a.getId() %>" /> <input type="hidden"
+								name="idu" value="<%= a.getUsuario().getId() %>" />
 							<!-- Form Name -->
 							<legend>Cadastro/Edição</legend>
 
@@ -79,7 +85,7 @@
 								<label class="control-label" for="login">login</label>
 								<div class="controls">
 									<input id="login" name="login" type="text" placeholder=""
-										class="input-xlarge">
+										class="input-xlarge" value="<%= a.getUsuario().getLogin() %>">
 
 								</div>
 							</div>
@@ -88,7 +94,7 @@
 							<div class="control-group">
 								<label class="control-label" for="senha">senha</label>
 								<div class="controls">
-									<input id="senha" name="senha" type="password" placeholder=""
+									<input id="senha" name="senha" type="password" value="<%= a.getUsuario().getSenha() %>" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -98,7 +104,7 @@
 							<div class="control-group">
 								<label class="control-label" for="nome">nome</label>
 								<div class="controls">
-									<input id="nome" name="nome" type="text" placeholder=""
+									<input id="nome" name="nome" type="text" value="<%= a.getNome() %>" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -108,7 +114,7 @@
 							<div class="control-group">
 								<label class="control-label" for="cpf">cpf</label>
 								<div class="controls">
-									<input id="cpf" name="cpf" type="text" placeholder=""
+									<input id="cpf" name="cpf" type="text" value="<%= a.getCpf() %>" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -118,7 +124,7 @@
 							<div class="control-group">
 								<label class="control-label" for="telefone">telefone</label>
 								<div class="controls">
-									<input id="telefone" name="telefone" type="text" placeholder=""
+									<input id="telefone" name="telefone" value="<%= a.getTelefoneFixo() %>" type="text" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -128,7 +134,7 @@
 							<div class="control-group">
 								<label class="control-label" for="celular">celular</label>
 								<div class="controls">
-									<input id="celular" name="celular" type="text" placeholder=""
+									<input id="celular" name="celular" value="<%= a.getCelular() %>" type="text" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -140,7 +146,7 @@
 									nascimento</label>
 								<div class="controls">
 									<input id="datanasc" name="datanasc" type="text"
-										placeholder="dd/mm/yyyy" class="input-xlarge">
+										placeholder="dd/mm/yyyy" value="<%= a.getDataNascimento() %>" class="input-xlarge">
 
 								</div>
 							</div>
@@ -149,7 +155,7 @@
 							<div class="control-group">
 								<label class="control-label" for="email">email</label>
 								<div class="controls">
-									<input id="email" name="email" type="text" placeholder=""
+									<input id="email" name="email" value="<%= a.getEmail() %>" type="text" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -159,7 +165,7 @@
 							<div class="control-group">
 								<label class="control-label" for="rua">rua</label>
 								<div class="controls">
-									<input id="rua" name="rua" type="text" placeholder=""
+									<input id="rua" name="rua" type="text" value="<%= a.getEndereco().getRua() %>" placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -169,7 +175,7 @@
 							<div class="control-group">
 								<label class="control-label" for="numero">numero</label>
 								<div class="controls">
-									<input id="numero" name="numero" type="text" placeholder=""
+									<input id="numero" name="numero" type="text" value="<%= a.getEndereco().getNumero() %>"  placeholder=""
 										class="input-xlarge" value="0">
 
 								</div>
@@ -179,7 +185,7 @@
 							<div class="control-group">
 								<label class="control-label" for="complemento">complemento</label>
 								<div class="controls">
-									<input id="complemento" name="complemento" type="text"
+									<input id="complemento" name="complemento" value="<%= a.getEndereco().getComplemento() %>"  type="text"
 										placeholder="" class="input-xlarge">
 
 								</div>
@@ -189,7 +195,7 @@
 							<div class="control-group">
 								<label class="control-label" for="bairro">bairro</label>
 								<div class="controls">
-									<input id="bairro" name="bairro" type="text" placeholder=""
+									<input id="bairro" name="bairro" type="text" value="<%= a.getEndereco().getBairro() %>"  placeholder=""
 										class="input-xlarge">
 
 								</div>
@@ -199,7 +205,7 @@
 							<div class="control-group">
 								<label class="control-label" for="cep">cep</label>
 								<div class="controls">
-									<input id="cep" name="cep" type="text" placeholder=""
+									<input id="cep" name="cep" type="text" value="<%= a.getEndereco().getCep() %>"  placeholder=""
 										class="input-xlarge">
 
 								</div>

@@ -64,20 +64,14 @@ public class AlunosInserir extends HttpServlet {
 		e.setNumero(request.getParameter("numero") != null ? Integer
 				.parseInt(request.getParameter("numero")) : 0);
 		e.setRua(request.getParameter("rua"));
-		//aluno.setEndereco(e);
-		
-		
+		 aluno.setEndereco(e);
+
 		Usuario u = new Usuario();
 		u.setLogin(request.getParameter("login"));
 		u.setSenha(request.getParameter("senha"));
-		u.setId(request.getParameter("idu") != null ? Integer.parseInt(request
-				.getParameter("idu")) : 0);
-
-		aluno.setId(request.getParameter("idu") != null ? Integer
-				.parseInt(request.getParameter("ida")) : 0);
 
 		aluno.setUsuario(u);
-		
+
 		AcademiaFacade.salvarAluno(aluno);
 
 		response.sendRedirect("alunos-listar");
