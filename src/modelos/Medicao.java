@@ -16,6 +16,7 @@ public class Medicao extends Entidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private Date data;
+	private String descricao;
 
 	@OneToMany(mappedBy = "medicao")
 	private List<MedidaAvaliacao> medidasAvaliacao;
@@ -48,4 +49,13 @@ public class Medicao extends Entidade {
 	public Serializable GetId() {
 		return this.id;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 }
