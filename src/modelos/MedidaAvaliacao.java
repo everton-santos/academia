@@ -61,4 +61,14 @@ public class MedidaAvaliacao extends Entidade {
 		return this.id;
 	}
 
+	public Medicao getMedicao() {
+		return medicao;
+	}
+
+	public void setMedicao(Medicao medicao) {
+		this.medicao = medicao;
+	}
+
+	
+	
 }
