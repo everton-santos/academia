@@ -116,13 +116,7 @@
 									<td><%=aluno.getMedicao().getDescricao()%></td>
 									<td><%=aluno.getValor()%></td>
 									
-									<td><a href="AvaliacoesEditarInstrutor?id=<%=aluno.getId()%>"
-										class="btn btn-primary"><span
-											class="glyphicon glyphicon-pencil"></span></a> 
-											<a
-										href="AvaliacoesExcluirInstrutor?id=<%=aluno.getId()%>"
-										class="btn btn-danger"><span
-											class="glyphicon glyphicon-remove"></span></a></td>
+									<td></td>
 								</tr>
 								<%
 									}

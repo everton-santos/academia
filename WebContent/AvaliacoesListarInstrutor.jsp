@@ -1,4 +1,4 @@
-<%@page import="modelos.FichaExercicio"%>
+<%@page import="modelos.MedidaAvaliacao"%>
 <%@page import="modelos.Ficha"%>
 <%@page import="modelos.Medicao"%>
 <%@page import="modelos.Exercicio"%>
@@ -54,72 +54,35 @@
 				<div class="col-md-10 col-md-offset-1">
 					<h3>Listar fichas</h3>
 
-					<form action="FichasInserirInstrutor" method="post">
-						Nome aluno:
-						<select
-							id="selectbasic" name="aluno">
-							<option value="">Selecione</option>
-							<%
-								List<Aluno> lista = (List<Aluno>) request
-										.getAttribute("alunos");
-
-								for (Aluno obj : lista) {
-							%>
-							<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
-
-							<%
-								}
-							%>
-						</select> 
-						<br>
-						Exercicio:
-						<select
-							id="selectbasic" name="exercicio">
-							<option value="">Selecione</option>
-							<%
-								List<Exercicio> listaExercicio = (List<Exercicio>) request
-										.getAttribute("exercicios");
-
-								for (Exercicio obj : listaExercicio) {
-							%>
-							<option value="<%=obj.getId()%>"><%=obj.getNome()%></option>
-
-							<%
-								}
-							%>
-						</select> 
-						
-						Numero de serie:
-						<input type="text" name="qtdSeries" />
-						Qtd repeticoes
-						<input type="text" name="qtdRepeticoes" />
-						
-						<input type="submit"
-							value="Enviar" />
-					</form>
 
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Exercico</th>
-									<th>Qtd Repeticoes</th>
-									<th>Qtd Series</th>
+									
+									<th>nome</th>
+									<th>medida</th>
+									<th>valor</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									List<FichaExercicio> listaAlunos = (List<FichaExercicio>) request
+									List<MedidaAvaliacao> listaAlunos = (List<MedidaAvaliacao>) request
 											.getAttribute("lista");
 
-									for (FichaExercicio aluno : listaAlunos) {
+									for (MedidaAvaliacao aluno : listaAlunos) {
 								%>
 								<tr>
-									<td><%=aluno.getExercicio().getNome()%></td>
-									<td><%=aluno.getQtdRepeticoes()%></td>
-									<td><%=aluno.getQtdSeries()%></td>
+									<td><%=aluno.getAvaliacao().getAluno().getNome()%></td>
+									<td><%=aluno.getMedicao().getDescricao()%></td>
+									<td><%=aluno.getValor()%></td>
 									
-									<td></td>
+									<%-- <td><a href="FichaEditarInstrutor?id=<%=aluno.getId()%>"
+										class="btn btn-primary"><span
+											class="glyphicon glyphicon-pencil"></span></a> <a
+										href="FichaExcluirInstrutor?id=<%=aluno.getId()%>"
+										class="btn btn-danger"><span
+											class="glyphicon glyphicon-remove"></span></a></td> --%>
 								</tr>
 								<%
 									}
